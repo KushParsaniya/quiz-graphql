@@ -54,6 +54,19 @@ Here are some examples of how to interact with the API:
        allQuestions {
            id
            que
+          //other field you want
+       }
+    }
+    ```
+
+2. Fetch specific question by its unique id:
+
+    ```graphql
+    query {
+       findOne(id: 1) {
+           id
+           que
+          // other fields that you want
        }
     }
     ```
