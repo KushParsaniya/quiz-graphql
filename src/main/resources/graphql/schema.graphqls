@@ -1,9 +1,57 @@
+"""
+# GraphQL API for Quiz Platform
+Our Quiz API is build on GraphQL which provides clients to request exact data, simplifies API versioning, and enables powerful developer tools.
+
+## Queries:
+Defines the queries available on our service.
+"""
 type Query {
+    """
+    - Fetches all questions in the system.
+    - Returns a list of Question objects.
+    """
     allQuestions: [Question]!
+
+    """
+    - Fetches a specific question by its unique ID.
+    - Argument: `id` (ID)
+    - Returns: Question object.
+    """
     findOne(id: ID!): Question
+
+    """
+    - Fetches a specific quiz by its unique ID, along with associated questions.
+    - Argument: `quizId` (ID)
+    - Returns: A list of QuestionWrapper objects.
+    """
+    getQuiz(quizId: ID!): [QuestionWrapper]!
+
+    """
+    - Fetches all quizzes available in the system.
+    - Returns: A list of Quiz objects.
+    """
+    allQuiz: [Quiz]!
+
+    """
+    - Submit a quiz and get the result.
+    - Arguments: `quizId` (ID), `userAnswers` ([Response])
+    - Returns: Result object.
+    """
+    submitQuiz(quizId: ID!,userAnswers: [Response]!): Result
+
 }
 
+
+"""
+## Mutations:
+Defines the mutations available on our service.
+"""
 type Mutation {
+    """
+    - Creates a new question with the provided details.
+    - Arguments: `type`, `que`, `option1`, `option2`, `option3`, `option4`, `ans`, `difficulty` (All String type)
+    - Returns: New Question object.
+    """
     addOne(type: String,
         que: String,
         option1: String,
@@ -13,9 +61,34 @@ type Mutation {
         ans: String,
         difficulty: String) : Question!
 
+    """
+    - Deletes a specific question by its unique ID.
+    - Argument: `id` (ID)
+    - Returns: Deleted Question object.
+    """
     deleteOne(id: ID!): Question
+
+    """
+    - Creates a new quiz with the provided details.
+    - Arguments: `title` (String), `numberOfQuestions` (Int), `type` (String)
+    - Returns: New Quiz object.
+    """
+    createQuiz(title: String, numberOfQuestions: Int, type: String): Quiz
+
+    """
+    - Deletes a specific quiz by its unique ID.
+    - Argument: `quizId` (ID)
+    """
+    deleteQuiz(quizId: ID!): Quiz
 }
 
+
+# Types
+
+"""
+- Represents a question in the system.
+- Fields: `id`, `type`, `que`, `option1`, `option2`, `option3`, `option4`, `ans`, `difficulty`
+"""
 type Question {
     id: ID!
     type: String
@@ -26,4 +99,51 @@ type Question {
     option4: String
     ans: String
     difficulty: String
+}
+
+"""
+- Represents a quiz in the system.
+- Fields: `id`, `title`, `questions`
+"""
+type Quiz {
+    "Unique identifier of the quiz."
+    id: ID!
+    "Title of the quiz."
+    title: String
+    "List of questions included in the quiz."
+    questions: [Question]!
+}
+
+"""
+- Wraps a question and its options.
+- Fields: `id`, `que`, `option1`, `option2`, `option3`, `option4`
+- This Are send to user and user have to answer it.
+"""
+type QuestionWrapper {
+    id: ID!
+    que: String
+    option1: String
+    option2: String
+    option3: String
+    option4: String
+}
+
+
+"""
+- Represents the result of a quiz.
+- Fields: `correct` (Number of correct answers), `incorrect` (Number of incorrect answers)
+"""
+type Result {
+    correct: Int
+    incorrect: Int
+}
+
+"""
+## input:
+- Represents user's answer to a question.
+- Fields: `id`, `ans`
+"""
+input Response {
+    id: ID!
+    ans: String
 }
