@@ -41,7 +41,7 @@ Build and run the app using Maven:
 mvn spring-boot:ru
 ```
 
-By default, the GraphQL API will be available at `http://localhost:8080/graphql`.
+By default, the GraphQL API will be available at `http://localhost:8080/graphiql`.
 
 ## Examples 
 
