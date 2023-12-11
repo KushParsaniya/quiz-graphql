@@ -4,6 +4,9 @@ import dev.kush.quizgraphql.model.Question;
 
 import java.util.List;
 
+/**
+ * The QuestionService interface defines the methods for managing questions in a quiz.
+ */
 public interface QuestionService {
     List<Question> getAllQuestions();
 

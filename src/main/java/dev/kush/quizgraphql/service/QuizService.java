@@ -7,6 +7,10 @@ import dev.kush.quizgraphql.model.Result;
 
 import java.util.List;
 
+
+/**
+ * The QuizService interface provides methods for managing quizzes.
+ */
 public interface QuizService {
     Quiz createQuiz(String title, int numQ, String type);
 

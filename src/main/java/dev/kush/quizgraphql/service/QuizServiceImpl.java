@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * This class implements the QuizService interface and provides the functionality to manage quizzes in the application.
+ */
 @Service
-public class QuizServiceImpl implements QuizService{
+public class QuizServiceImpl implements QuizService {
 
     private final QuizRepository quizRepository;
     private final QuestionRepository questionRepository;
@@ -24,6 +27,14 @@ public class QuizServiceImpl implements QuizService{
         this.questionRepository = questionRepository;
     }
 
+    /**
+     * Creates a new Quiz with the specified title, number of questions, and type.
+     *
+     * @param title the title of the Quiz
+     * @param numQ the number of questions in the Quiz
+     * @param type the type of questions to include in the Quiz
+     * @return the created Quiz
+     */
     @Override
     public Quiz createQuiz(String title, int numQ, String type) {
         List<Question> questions = questionRepository.findRandomQuestionsByType(numQ, type);
@@ -35,6 +46,13 @@ public class QuizServiceImpl implements QuizService{
 
     }
 
+    /**
+     * Retrieves the list of question wrappers for a quiz by its ID.
+     *
+     * @param id the ID of the quiz
+     * @return a list of QuestionWrapper objects representing the questions in the quiz
+     * @throws RuntimeException if no quiz is found with the specified ID
+     */
     @Override
     public List<QuestionWrapper> getQuizQuestions(Integer id) {
         Quiz quiz = quizRepository.findById(id).orElseThrow(
@@ -57,11 +75,23 @@ public class QuizServiceImpl implements QuizService{
         return questionForUser;
     }
 
+    /**
+     * Retrieves all quizzes from the application.
+     *
+     * @return a list of Quiz objects representing all quizzes in the application
+     */
     @Override
     public List<Quiz> getAllQuiz() {
         return quizRepository.findAll();
     }
 
+    /**
+     * Submits a quiz with the given ID and responses.
+     *
+     * @param id        the ID of the quiz
+     * @param responses the list of responses provided by the user
+     * @return a Result object containing the number of correct and incorrect responses
+     */
     @Override
     public Result submitQuiz(Integer id, List<Response> responses) {
         Quiz quiz = quizRepository.findById(id).orElseThrow(
@@ -91,6 +121,13 @@ public class QuizServiceImpl implements QuizService{
         return new Result(correct, minSize - correct);
     }
 
+    /**
+     * Deletes a Quiz with the specified ID.
+     *
+     * @param id the ID of the Quiz to delete
+     * @return the deleted Quiz
+     * @throws RuntimeException if the Quiz with the specified ID is not found
+     */
     @Override
     public Quiz deleteQuiz(Integer id) {
         Quiz quiz = quizRepository.findById(id).orElseThrow(

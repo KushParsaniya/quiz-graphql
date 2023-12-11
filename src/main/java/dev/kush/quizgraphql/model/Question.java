@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Represents a question in a quiz.
+ */
 @Entity
 @Table(name = "questions")
 @Getter

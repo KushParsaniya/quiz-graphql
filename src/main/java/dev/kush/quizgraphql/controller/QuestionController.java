@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+/**
+ * Controller class for managing questions.
+ */
 @Controller
 public class QuestionController {
 
