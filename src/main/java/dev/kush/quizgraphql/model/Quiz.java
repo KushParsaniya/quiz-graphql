@@ -10,6 +10,9 @@ import java.util.List;
 import static jakarta.persistence.CascadeType.*;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+/**
+ * Represents a Quiz in the application.
+ */
 @Entity
 @Getter
 @Setter

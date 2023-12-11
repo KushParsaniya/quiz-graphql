@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import java.util.List;
 
 /**
- *
+ * The QuizController class is responsible for handling the API endpoints related to quizzes.
  */
 @Controller
 public class QuizController {
