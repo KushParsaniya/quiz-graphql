@@ -1,0 +1,29 @@
+type Query {
+    allQuestions: [Question]!
+    findOne(id: ID!): Question
+}
+
+type Mutation {
+    addOne(type: String,
+        que: String,
+        option1: String,
+        option2: String,
+        option3: String,
+        option4: String,
+        ans: String,
+        difficulty: String) : Question!
+
+    deleteOne(id: ID!): Question
+}
+
+type Question {
+    id: ID!
+    type: String
+    que: String
+    option1: String
+    option2: String
+    option3: String
+    option4: String
+    ans: String
+    difficulty: String
+}
