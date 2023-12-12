@@ -109,7 +109,7 @@ Here are some examples of how to interact with the API:
    mutation {
     generateOneAutomatically(
           language: "java",
-          type: "spring jpa"
+          type: "Java Stream"
      ){
           id
           que
