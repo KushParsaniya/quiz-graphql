@@ -1,6 +1,7 @@
 # Quiz-graphql
 
 This project is a Quiz platform developed with Spring and GraphQL API. Users can interact with the system to create and answer quizzes.
+User Can Generate Question Automatically with language(like java,python,...) name and specific topic(oop,function,array,collection...) It Uses Google's Bard Api key to generate Questions.
 
 ## Getting Started
 
@@ -42,10 +43,11 @@ and follow this steps
    docker-compose up -d
    ```
 
-4. You Can stop it with this
+3. You Can stop it with this
    ```bash
    docker-compose down
    ```
+By default, the GraphQL API will be available at `http://localhost:8080/graphiql`.
 
 ## Option - 2 : Run Using This Repository
 
@@ -56,10 +58,17 @@ and follow this steps
    ```
 
 2. Install dependencies 
-
    ```bash
    mvn install
    ```
+
+3. Running the App
+   Build and run the app using Maven:
+   ```bash
+   mvn spring-boot:run
+   ```
+
+By default, the GraphQL API will be available at `http://localhost:8080/graphiql`.
 
 ## API Reference
 
@@ -67,21 +76,12 @@ The project uses GraphQL for API service.
 
 See `schema.graphqls` file with comments for details on the capabilities of the API.
 
-## Running the App
-
-Build and run the app using Maven:
-```bash
-mvn spring-boot:run
-```
-
-By default, the GraphQL API will be available at `http://localhost:8080/graphiql`.
 
 ## Examples 
 
 Here are some examples of how to interact with the API:
 
 1. Fetch all questions:
-
     ```graphql
     query {
        allQuestions {
@@ -93,7 +93,6 @@ Here are some examples of how to interact with the API:
     ```
 
 2. Fetch specific question by its unique id:
-
     ```graphql
     query {
        findOne(id: 1) {
@@ -103,4 +102,23 @@ Here are some examples of how to interact with the API:
        }
     }
     ```
-...
+3. Generate Question Automatically Uses Google Bard Api key
+   ```graphql
+   mutation {
+    generateOneAutomatically(
+          language: "java",
+          type: "spring jpa"
+     ){
+          id
+          que
+          option1
+          option2
+          option3
+          option4
+          ans
+          type
+          difficulty
+        }   
+      }
+   ```
+   
