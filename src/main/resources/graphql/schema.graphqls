@@ -59,7 +59,18 @@ type Mutation {
         option3: String,
         option4: String,
         ans: String,
-        difficulty: String) : Question!
+        difficulty: String) : Question
+
+    """
+    - Generates a new question automatically based on specified language and type.
+    - Arguments: `language` (String), `type` (String).
+    - Uses Google's Bard AI to Generate a new question
+    ---- `language`: The programming language that the question should be related to.
+    ---- `type`: The type of question to be generated (e.g., 'oop', 'functional', etc.)
+    - Returns: A new Question object with computer-generated contents. This question is also automatically saved to the database upon creation.
+    - Note: The exact algorithm for question generation is an implementation detail and may vary. It generally uses a combination of predefined templates and randomization to generate diverse questions.
+    """
+    generateOneAutomatically(language: String, type: String): Question
 
     """
     - Deletes a specific question by its unique ID.
