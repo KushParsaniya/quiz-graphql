@@ -15,8 +15,41 @@ Ensure you have the following installed on your local machine:
 
 ### Installation
 
-1. Clone this repo
+## Option - 1 : Run Using Docker
 
+With This you don't have to download any jdk, java or any dependency
+make sure you have the following installed:
+- Docker
+- Docker Compose
+
+Now First clone docker-compose.yml file from this project
+- In Place of password enter password(any password will work)
+and follow this steps
+
+
+1. Open Terminal and navigate to the Project Directory
+   ```bash
+   cd your-repo
+   ```
+
+2. Run Docker Compose
+   ```bash
+   docker-compose up
+   ```
+
+   Or Run In Background
+   ```bash
+   docker-compose up -d //run in background
+   ```
+
+4. You Can stop it with this
+   ```bash
+   docker-compose down
+   ```
+
+## Option - 2 : Run Using This Repository
+
+1. Clone this repo
    ```bash
    git clone https://github.com/KushParsaniya/quiz-graphql.git
    cd REPOSITORY # Replace REPOSITORY with your data
@@ -38,7 +71,7 @@ See `schema.graphqls` file with comments for details on the capabilities of the 
 
 Build and run the app using Maven:
 ```bash
-mvn spring-boot:ru
+mvn spring-boot:run
 ```
 
 By default, the GraphQL API will be available at `http://localhost:8080/graphiql`.
