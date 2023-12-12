@@ -1,6 +1,6 @@
 # Quiz-graphql
 
-* his project is a Quiz platform developed with Spring and GraphQL API. Users can interact with the system to create and answer quizzes.
+* This project is a Quiz platform developed with Spring and GraphQL API. Users can interact with the system to create and answer quizzes.
 * User Can Generate Question Automatically with language(like java,python,...) name and specific topic(oop,function,array,collection...) It Uses Google's Bard Api key to 
  generate Questions.
 
