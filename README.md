@@ -39,7 +39,7 @@ and follow this steps
 
    Or Run In Background
    ```bash
-   docker-compose up -d //run in background
+   docker-compose up -d
    ```
 
 4. You Can stop it with this
