@@ -1,7 +1,8 @@
-package dev.kush.quizgraphql.service;
+package dev.kush.quizgraphql.service.impl;
 
 import dev.kush.quizgraphql.model.Question;
 import dev.kush.quizgraphql.repo.QuestionRepository;
+import dev.kush.quizgraphql.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * Implementation of the QuestionService interface.
  */
 @Service
-public class QuestionServiceImpl implements QuestionService{
+public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionRepository questionRepository;
 

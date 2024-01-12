@@ -31,7 +31,7 @@ public class QuizController {
             @Argument(value = "numberOfQuestions") int numQ,
             @Argument String type
     ) {
-        return quizService.createQuiz(title, numQ, type);
+        return quizService.createQuiz(title, numQ, type.trim().toLowerCase());
     }
 
     @QueryMapping(value = "getQuiz")

@@ -2,7 +2,7 @@ package dev.kush.quizgraphql.controller;
 
 import dev.kush.quizgraphql.model.Question;
 import dev.kush.quizgraphql.service.GenerateQuestionService;
-import dev.kush.quizgraphql.service.GenerateQuestionServiceImpl;
+import dev.kush.quizgraphql.service.impl.GenerateQuestionServiceImpl;
 import dev.kush.quizgraphql.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -51,7 +51,7 @@ public class QuestionController {
             @Argument String ans,
             @Argument String difficulty
             ){
-        return questionService.addQuestion(type, que, option1,option2,option3,option4,ans, difficulty);
+        return questionService.addQuestion(type.trim().toLowerCase(), que, option1,option2,option3,option4,ans, difficulty);
     }
 
     @MutationMapping(value = "deleteOne")
@@ -61,6 +61,6 @@ public class QuestionController {
 
     @MutationMapping(value = "generateOneAutomatically")
     public Question generateQuestionByBardAI(@Argument String language, @Argument String type) throws IOException, InterruptedException {
-        return generateQuestionService.generateQuestion(language, type);
+        return generateQuestionService.generateQuestion(language.trim().toLowerCase(), type);
     }
 }
