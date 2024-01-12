@@ -1,4 +1,4 @@
-package dev.kush.quizgraphql.service;
+package dev.kush.quizgraphql.service.impl;
 
 import dev.kush.quizgraphql.config.ApiKey;
 import dev.kush.quizgraphql.model.Question;
@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dev.kush.quizgraphql.service.GenerateQuestionService;
+import dev.kush.quizgraphql.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,9 @@
-package dev.kush.quizgraphql.service;
+package dev.kush.quizgraphql.service.impl;
 
 import dev.kush.quizgraphql.model.*;
 import dev.kush.quizgraphql.repo.QuestionRepository;
 import dev.kush.quizgraphql.repo.QuizRepository;
+import dev.kush.quizgraphql.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -108,7 +109,7 @@ public class QuizServiceImpl implements QuizService {
 
         int correct = (int) IntStream.range(0,minSize)
                 .filter(i -> responses.get(i).ans().trim().
-                        equalsIgnoreCase(questions.get(i).getAns().trim()))
+                        equals(questions.get(i).getAns().trim()))
                 .count();
 
 //        for (Response response:responses){
